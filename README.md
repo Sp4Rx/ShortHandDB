@@ -1,7 +1,9 @@
 # ShortHandDB
+[![](https://jitpack.io/v/Sp4Rx/shorthanddb.svg)](https://jitpack.io/#Sp4Rx/shorthanddb)
+
 Get rid of those create table quires in android and get a neat and clean code.
 
-NB: This is my first attempt to create a library for android. I have created for my  own benefit and sharing it if some else find it useful.
+**NB:** This is my first attempt to create a library for android. I have created for my  own benefit and sharing it if some else find it useful.
 
 ## Installation
 Add it in your **root** build.gradle at the end of repositories:
