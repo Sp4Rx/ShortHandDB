@@ -26,8 +26,8 @@ Generate the create table SQL
 
         //Method 1
         Map<String, DataType> tableStructure = new HashMap<>();
-        tableStructure.put(KEY_USER_EMAIL, DataType.TEXT);
-        tableStructure.put(KEY_USER_ID, DataType.INTEGER);
+        tableStructure.put(COLUMN_USER_EMAIL, DataType.TEXT);
+        tableStructure.put(COLUMN_USER_ID, DataType.INTEGER);
 
         Log.d(TAG, Table.generateSql(TABLE_USER, tableStructure));
 
@@ -36,10 +36,10 @@ Generate the create table SQL
             @Override
             public ArrayList<Schema> getSchema() {
                 ArrayList<Schema> schemas = new ArrayList<>();
-                schemas.add(new Schema(KEY_USER_ID, 
+                schemas.add(new Schema(COLUMN_USER_ID, 
                 new Constraint[]{Constraint.PRIMARY_KEY, Constraint.UNIQUE}, 
                 DataType.INTEGER));
-                schemas.add(new Schema(KEY_USER_EMAIL, DataType.TEXT));
+                schemas.add(new Schema(COLUMN_USER_EMAIL, DataType.TEXT));
                 return schemas;
             }
         };
@@ -48,8 +48,8 @@ You can also pass the database object to create the table directly
 
         //Method 3
         Map<String, DataType> tableStructure = new HashMap<>();
-        tableStructure.put(KEY_USER_EMAIL, DataType.TEXT);
-        tableStructure.put(KEY_USER_ID, DataType.INTEGER);
+        tableStructure.put(COLUMN_USER_EMAIL, DataType.TEXT);
+        tableStructure.put(COLUMN_USER_ID, DataType.INTEGER);
 
         Table.create(TABLE_USER, tableStructure, db);
 
@@ -58,10 +58,10 @@ You can also pass the database object to create the table directly
             @Override
             public ArrayList<Schema> getSchema() {
                 ArrayList<Schema> schemas = new ArrayList<>();
-                schemas.add(new Schema(KEY_USER_ID,
+                schemas.add(new Schema(COLUMN_USER_ID,
                  new Constraint[]{Constraint.PRIMARY_KEY, Constraint.UNIQUE},
                  DataType.INTEGER));
-                schemas.add(new Schema(KEY_USER_EMAIL, DataType.TEXT));
+                schemas.add(new Schema(COLUMN_USER_EMAIL, DataType.TEXT));
                 return schemas;
             }
         };
@@ -69,7 +69,7 @@ You can also pass the database object to create the table directly
 
 ## License
 
-      MIT License
+    MIT License
     
     Copyright (c) 2017 Suvajit Sarkar
     
