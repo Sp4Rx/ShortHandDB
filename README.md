@@ -1,5 +1,6 @@
 # ShortHandDB
 [![](https://jitpack.io/v/Sp4Rx/shorthanddb.svg)](https://jitpack.io/#Sp4Rx/shorthanddb)
+[![Gitter](https://badges.gitter.im/Sp4Rx/ShortHandDB.svg)](https://gitter.im/Sp4Rx/ShortHandDB?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 Get rid of those create table quires in android and get a neat and clean code.
 
