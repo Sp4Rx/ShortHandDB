@@ -13,6 +13,7 @@ import java.util.Map;
 
 import io.github.sp4rx.shothanddb.Constraint;
 import io.github.sp4rx.shothanddb.DataType;
+import io.github.sp4rx.shothanddb.Database;
 import io.github.sp4rx.shothanddb.Schema;
 import io.github.sp4rx.shothanddb.ShortHandSchema;
 import io.github.sp4rx.shothanddb.Table;
@@ -66,7 +67,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
+        Database.deleteAllTables(db);
         onCreate(db);
     }
 
