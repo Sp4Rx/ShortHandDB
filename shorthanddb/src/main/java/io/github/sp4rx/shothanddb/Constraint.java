@@ -5,7 +5,7 @@ package io.github.sp4rx.shothanddb;
  */
 
 public enum Constraint {
-    PRIMARY_KEY("PRIMARY KEY"), NOT_NULL("NOT NULL"), UNIQUE("UNIQUE"), FOREIGN_KEY("FOREIGN KEY");
+    PRIMARY_KEY("PRIMARY KEY"), NOT_NULL("NOT NULL"), UNIQUE("UNIQUE"), FOREIGN_KEY("FOREIGN KEY"), AUTOINCREMENT("AUTOINCREMENT");
 
     private String value;
 

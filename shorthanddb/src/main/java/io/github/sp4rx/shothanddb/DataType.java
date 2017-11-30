@@ -5,7 +5,7 @@ package io.github.sp4rx.shothanddb;
  */
 
 public enum DataType {
-    TEXT("TEXT"), INTEGER("INTEGER");
+    TEXT("TEXT"), INTEGER("INTEGER"), REAL("REAL"), BLOB("BLOB");
 
     private String value;
 
