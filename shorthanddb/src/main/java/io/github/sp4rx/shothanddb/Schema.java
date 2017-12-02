@@ -8,18 +8,18 @@ import java.util.Arrays;
 
 public class Schema {
     private String columnName;
-    private Constraint[] constraints;
     private DataType dataType;
+    private Constraint[] constraints;
 
     public Schema(String columnName, DataType dataType) {
         this.columnName = columnName;
         this.dataType = dataType;
     }
 
-    public Schema(String columnName, Constraint[] constraints, DataType dataType) {
+    public Schema(String columnName, DataType dataType, Constraint[] constraints) {
         this.columnName = columnName;
-        this.constraints = constraints;
         this.dataType = dataType;
+        this.constraints = constraints;
     }
 
     public DataType getDataType() {
@@ -60,8 +60,8 @@ public class Schema {
     public String toString() {
         return "Schema{" +
                 "columnName='" + columnName + '\'' +
-                ", constraints=" + Arrays.toString(constraints) +
                 ", dataType=" + dataType +
+                ", constraints=" + Arrays.toString(constraints) +
                 '}';
     }
 }

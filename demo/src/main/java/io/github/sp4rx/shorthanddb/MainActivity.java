@@ -35,16 +35,16 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, Table.generateSql(TABLE_USER, tableStructure));
 
         //Method 2
-        ShortHandSchema shortHandSchema = new ShortHandSchema() {
-            @Override
-            public ArrayList<Schema> getSchema() {
-                ArrayList<Schema> schemas = new ArrayList<>();
-                schemas.add(new Schema(KEY_USER_ID, new Constraint[]{Constraint.PRIMARY_KEY, Constraint.UNIQUE}, DataType.INTEGER));
-                schemas.add(new Schema(KEY_USER_EMAIL, DataType.TEXT));
-                return schemas;
-            }
+        ShortHandSchema shortHandSchema = () -> {
+            ArrayList<Schema> schemas = new ArrayList<>();
+            schemas.add(new Schema(KEY_USER_ID, DataType.INTEGER, new Constraint[]{Constraint.PRIMARY_KEY, Constraint.UNIQUE} ));
+            schemas.add(new Schema(KEY_USER_EMAIL, DataType.TEXT));
+            return schemas;
         };
 
         Log.d(TAG, Table.generateSql(TABLE_USER, shortHandSchema));
+
+        DbHelper.initDb(this);
+        System.out.println( DbHelper.getInfo(this));
     }
 }

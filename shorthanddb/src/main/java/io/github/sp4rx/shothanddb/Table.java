@@ -98,9 +98,9 @@ public final class Table {
         int count = 0;
         for (Schema schema : shortHandSchema.getSchema()) {
             if (count == shortHandSchema.getSchema().size() - 1) {
-                createTableSql.append(schema.getColumnName()).append(" ").append(schema.getConstraintsString()).append(" ").append(schema.getDataType().getValue()).append(" )");
+                createTableSql.append(schema.getColumnName()).append(" ").append(schema.getDataType().getValue()).append(" ").append(schema.getConstraintsString()).append(" )");
             } else {
-                createTableSql.append(schema.getColumnName()).append(" ").append(schema.getConstraintsString()).append(" ").append(schema.getDataType().getValue()).append(", ");
+                createTableSql.append(schema.getColumnName()).append(" ").append(schema.getDataType().getValue()).append(" ").append(schema.getConstraintsString()).append(", ");
             }
             count++;
         }
@@ -133,7 +133,8 @@ public final class Table {
         try {
             db.execSQL(createTableSql.toString());
         } catch (SQLException e) {
-            e.printStackTrace();
+            if (Logger.isDebuggable)
+                e.printStackTrace();
             return false;
         }
         return true;
@@ -152,16 +153,19 @@ public final class Table {
         int count = 0;
         for (Schema schema : shortHandSchema.getSchema()) {
             if (count == shortHandSchema.getSchema().size() - 1) {
-                createTableSql.append(schema.getColumnName()).append(" ").append(schema.getConstraintsString()).append(" ").append(schema.getDataType().getValue()).append(" )");
+                createTableSql.append(schema.getColumnName()).append(" ").append(schema.getDataType().getValue()).append(" ").append(schema.getConstraintsString()).append(" )");
             } else {
-                createTableSql.append(schema.getColumnName()).append(" ").append(schema.getConstraintsString()).append(" ").append(schema.getDataType().getValue()).append(", ");
+                createTableSql.append(schema.getColumnName()).append(" ").append(schema.getDataType().getValue()).append(" ").append(schema.getConstraintsString()).append(", ");
             }
             count++;
         }
 
+        Logger.i(TAG, "SQL: " + createTableSql);
+
         try {
             db.execSQL(createTableSql.toString());
         } catch (SQLException e) {
+            if (Logger.isDebuggable)
             e.printStackTrace();
             return false;
         }

@@ -24,8 +24,8 @@ import io.github.sp4rx.shothanddb.Table;
 
 
 public class DbHelper extends SQLiteOpenHelper {
-    private static final String DB_NAME = "qr_login";
-    private static final int VERSION = 4;
+    private static final String DB_NAME = "short.db";
+    private static final int VERSION = 11;
 
     private static final String TAG = "DbHelper";
     private static DbHelper mInstance;
@@ -44,23 +44,21 @@ public class DbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
         //Method 3
-        Map<String, DataType> tableStructure = new HashMap<>();
-        tableStructure.put(KEY_USER_EMAIL, DataType.TEXT);
-        tableStructure.put(KEY_USER_ID, DataType.INTEGER);
-
-        Table.create(TABLE_USER, tableStructure, db);
+//        Map<String, DataType> tableStructure = new HashMap<>();
+//        tableStructure.put(KEY_USER_EMAIL, DataType.TEXT);
+//        tableStructure.put(KEY_USER_ID, DataType.INTEGER);
+//
+//        Table.create(TABLE_USER, tableStructure, db);
 
         //Method 4
-        ShortHandSchema shortHandSchema = new ShortHandSchema() {
-            @Override
-            public ArrayList<Schema> getSchema() {
-                ArrayList<Schema> schemas = new ArrayList<>();
-                schemas.add(new Schema(KEY_USER_ID, new Constraint[]{Constraint.PRIMARY_KEY, Constraint.UNIQUE}, DataType.INTEGER));
-                schemas.add(new Schema(KEY_USER_EMAIL, DataType.TEXT));
-                return schemas;
-            }
+        ShortHandSchema shortHandSchema = () -> {
+            ArrayList<Schema> schemas = new ArrayList<>();
+            schemas.add(new Schema("id", DataType.INTEGER, new Constraint[]{ Constraint.PRIMARY_KEY, Constraint.AUTOINCREMENT} ));
+            schemas.add(new Schema(KEY_USER_ID, DataType.TEXT));
+            schemas.add(new Schema(KEY_USER_EMAIL, DataType.TEXT));
+            return schemas;
         };
-        Table.create(TABLE_USER_2, shortHandSchema, db);
+        Table.create(TABLE_USER, shortHandSchema, db);
 
     }
 
